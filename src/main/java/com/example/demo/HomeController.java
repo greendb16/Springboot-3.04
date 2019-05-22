@@ -18,7 +18,7 @@ public class HomeController {
     CourseRepository courseRepository;
 
     @RequestMapping("/")
-    public String courseform(Model model){
+    public String listCourses(Model model){
         model.addAttribute("courses", courseRepository.findAll());
         return "list";
 
@@ -30,7 +30,7 @@ public class HomeController {
     }
 
     @PostMapping("/process")
-    public String processform(@Valid Course course,
+    public String processForm(@Valid Course course,
                               BindingResult result){
         if (result.hasErrors()){
             return "courseform";
